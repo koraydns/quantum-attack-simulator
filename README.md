@@ -94,8 +94,89 @@ python examples/bb84_example.py --depolarization-noise 1
 ```
 
 ## Example Outputs and Visualizations
-### Example Output for PNS Attack
-Example console output during a PNS attack simulation:
+### Scenario 1: Depolarization Noise Enabled, No Attack
+
+This scenario demonstrates the BB84 protocol simulation with depolarization noise applied but no attack (e.g., MITM or PNS).
+
+#### Depolarization Noise:
+- A probability of 10% is applied, meaning qubits might undergo depolarization, simulating real-world noise in the quantum channel.
+- Observed mismatches in the key agreement phase are analyzed to determine whether they fall within the expected noise threshold.
+
+#### Key Agreement:
+- Despite some mismatches caused by noise, the protocol determines that the observed error rate is within the acceptable threshold for depolarization noise.
+- Communication proceeds successfully, and a shared key is generated.
+
+#### Security Checks:
+- The mismatch rate is compared against the expected noise threshold. It is highly likely that no attack will be detected.
+- The error rates for different intensity levels are analyzed. All rates are within the noise threshold, confirming no PNS attack.
+```bash
+python bb84_example.py --depolarization-noise 1
+```
+```bash
+Sender's Bits: 0000110101000111000101110111110101001100
+Sender's States: DSDSDSDDSDSDSSDSDDSSSDDSSDSSDSDSDSDSDDSS
+Sender's Bases: ZXZZXZZZXZXXZZZXXXXXXZZXXZXXZXZXXXZXZXXZ
+Sender's Intensities: ['high', 'none', 'medium', 'none', 'high', 'none', 'medium', 'high', 'none', 'medium', 'none', 'medium', 'none', 'none', 'low', 'none', 'medium', 'low', 'none', 'none', 'none', 'low', 'low', 'none', 'none', 'low', 'none', 'none', 'medium', 'none', 'high', 'none', 'medium', 'none', 'high', 'none', 'high', 'low', 'none', 'none']
+
+
+Applying depolarization noise with probability 0.1
+
+
+Receiver's Bases: ZXZZXXXXZZXZXZZXZXZZZZXZXXXXZXXZXXXZZZXX
+Receiver's Bits: 1001111011000111000001010111111101101100
+
+Performing security checks...
+An interception detected. Mismatched bits: 2
+Mismatch detected! Analyzing possible causes...
+Observed error rate: 9.52% (expected <= 10.00%)
+Differences are likely caused by depolarization noise.
+Communication can proceed despite mismatches caused by depolarization noise.
+Error rates by intensity (for PNS Check): {'low': 0.0, 'medium': 0.0, 'high': 0.0}
+
+Key: 000011011101011110110
+The key is 21 bits long.
+```
+### Scenario 2: No Depolarization Noise, No Attack
+
+This scenario represents the ideal condition where there is neither noise nor any attack on the quantum communication channel.
+
+#### Clean Channel:
+- No depolarization noise is applied, ensuring a clean quantum channel.
+- Sender and receiver's bases align perfectly in the shared indices, resulting in no mismatches.
+
+#### Key Agreement:
+- A perfect match between sender and receiver bits leads to a flawless key agreement.
+- The generated key is identical for both parties without any discrepancies.
+
+#### Security Checks:
+- Since there are no mismatches, it is confirmed that no interception (e.g., MITM attack) is detected.
+- The absence of error rates for intensity levels confirms that no PNS attack occurred.
+```bash
+python bb84_example.py
+```
+```bash
+Sender's Bits: 1110010101010111111000010111011010000111
+Sender's States: SDSDSDSSSSSSSDDDDDSDSSSSSSSSSSSSDDDDSSDD
+Sender's Bases: ZXXXZXZZZXXZXXZZXZZXZZZZZXZZXZXXXZZXXXZX
+Sender's Intensities: ['none', 'high', 'none', 'medium', 'none', 'high', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'high', 'high', 'low', 'high', 'low', 'none', 'high', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'low', 'high', 'medium', 'low', 'none', 'none', 'low', 'high']
+
+No depolarization noise applied.
+
+Receiver's Bases: XXZZXZZZZXXZZZXZZXXXZZXXXXZZZXXXXXXZZXXZ
+Receiver's Bits: 1101100101011011000000110111111010001110
+
+Performing security checks...
+Seems no interception. The tested bits of Sender and Receiver are the same.
+No significant mismatches detected. Proceeding with PNS attack detection...
+Error rates by intensity (for PNS Check): {'low': 0.0, 'high': 0.0}
+
+Key: 101010110001111011
+The key is 18 bits long.
+```
+### Scenario 3: PNS Attack Enabled
+```bash
+python bb84_example.py --attack-type PNS
+```
 ```bash
 Receiver's Bases: ZXXZZXXZZZZXZXXZXXZXXZZZXXXZZZXXXXZZXZZZ
 Receiver's Bits: 0011010101110111010100001101001110010010
@@ -105,10 +186,7 @@ Error rates by intensity (for PNS Check): {'low': 0.6, 'medium': 1.0, 'high': 0.
 Possible PNS attack detected. Final error rate: 0.6
 Communication is terminated due to possible PNS attack.
 ```
-
-### PNS Attack Visualization
-
-#### Description of the Visualization
+#### PNS Attack Visualization
 - **Blue Bars:** Error rates for different intensity levels (`low`, `medium`, `high`).
 - **Red Dashed Line:** Observed error rate across all qubits during communication.
 - **Green Dashed Line:** Expected noise level, representing the depolarization noise threshold.
@@ -117,8 +195,10 @@ This visualization helps distinguish between natural noise and potential attacks
 
 ![PNS Attack Effects Visualization](Screen_Shots/pns-attack-effects-visualization.png)
 
-### Example Output for MITM Attack
-Example console output during a MITM attack simulation:
+### Scenario 4: MITM Attack Enabled
+```bash
+python bb84_example.py --attack-type MITM
+```
 ```bash
 Receiver's Bases: XXXZXZXZXZXXZXZZZXXZZXXZZXZZZZZZZZZXXZZZ
 Receiver's Bits: 1000001111110010110000110111010111100100
@@ -130,9 +210,7 @@ Observed error rate: 36.00% (expected <= 10.00%)
 Differences exceed depolarization noise levels and may indicate an attack.
 Communication is terminated due to detected interception. Possible MITM attack.
 ```
-### MITM Attack Visualization
-
-#### Description of the Visualization
+#### MITM Attack Visualization
 - **Orange Bar:** Mismatch rate between the Sender's and Receiver's shared bits.
 - **Green Dashed Line:** Depolarization noise threshold, indicating the maximum expected error rate due to natural noise.
 
