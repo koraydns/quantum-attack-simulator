@@ -66,6 +66,20 @@ Alternatively, install the package directly via pip:
 ```bash
 pip install quantum-attack-simulator
 ```
+### Note for Git Clone Users
+If you cloned this repository using `git clone` instead of installing via `pip`, 
+you need to ensure the project directory is added to your Python path. 
+
+Uncomment and include the following code block at the beginning of bb84_example script:
+
+```python
+import sys
+import os
+
+current_dir = os.path.dirname(os.path.abspath(__file__))
+project_root = os.path.join(current_dir, '..')
+sys.path.append(project_root)
+```
 ### Running the Simulator
 To run the simulator with default settings:
 ```bash
