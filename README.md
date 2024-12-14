@@ -27,13 +27,47 @@ The BB84 protocol is a quantum key distribution protocol that enables two partie
 - **No-Cloning Theorem**: Quantum states cannot be perfectly duplicated.
 - **Measurement Collapse**: Measuring a quantum state changes it, making eavesdropping detectable.
 
-### Decoy and Signal States in BB84
+### Key Components of BB84 Communication
 
-To further enhance the security of the BB84 protocol, qubits are categorized into two types:
-- **Signal States (S)**: These qubits carry the actual information that will contribute to the final cryptographic key. The alignment of sender and receiver bases during measurement determines the accuracy of these states.
-- **Decoy States (D)**: These are non-key qubits introduced into the communication to detect eavesdropping attempts, such as Photon Number Splitting (PNS) attacks. Decoy states help measure discrepancies and ensure that any irregularities in the quantum channel are flagged as potential security breaches.
+- **Bits**:  
+  The classical binary values (`0` and `1`) that form the basis of the key. For example, the **Sender** generates a random sequence of bits:  
+  `Sender's Bits: 1110010101010111111000010111011010000111`
 
-By incorporating decoy states, the BB84 protocol becomes more robust, as it enables the detection of sophisticated attacks that exploit multi-photon signals or other vulnerabilities in the quantum channel.
+- **States**:  
+  Each bit is assigned a **state**:  
+  - `Signal States (S)`: Qubits carrying actual information that contribute to the final cryptographic key.  
+  - `Decoy States (D)`: Qubits inserted into the communication to detect potential attacks like Photon Number Splitting (PNS).  
+  `Sender's States: SDSDSDSSSSSSSDDDDDSDSSSSSSSSSSSSDDDDSSDD`
+
+- **Bases**:  
+  The basis used for encoding and measuring qubits. Two options are used in BB84:  
+  - `Z-Basis`: Encodes bits as |0⟩ and |1⟩.  
+  - `X-Basis`: Encodes bits as |+⟩ and |−⟩.  
+  A random sequence of bases ensures security:  
+  `Sender's Bases: ZXXXZXZZZXXZXXZZXZZXZZZZZXZZXZXXXZZXXXZX`
+
+- **Intensities**:  
+  Qubits in **decoy states** are assigned intensity levels (`low`, `medium`, `high`) to improve attack detection. Signal states have `none` intensity since they are not used for detection:  
+  `Sender's Intensities: ['none', 'high', 'none', 'medium', 'none', ...]`
+
+### BB84 Communication Process
+
+1. **Quantum Transmission**:  
+   The Sender encodes random bits into qubits using randomly chosen bases and sends them to the Receiver through a quantum channel.
+
+2. **Measurement by Receiver**:  
+   The Receiver measures each qubit using a randomly chosen basis. When the Receiver's basis matches the Sender's, the bit is successfully transmitted. Otherwise, the measurement is random.
+
+   Example:  
+   `Receiver's Bases: XXZZXZZZZXXZZZXZZXXXZZXXXXZZZXXXXXXZZXXZ`  
+   `Receiver's Bits: 1101100101011011000000110111111010001110`
+
+3. **Key Agreement**:  
+   After transmission, the Sender and Receiver compare their bases (over a classical channel). Bits where the bases match are used to form the final cryptographic key.
+
+4. Security Analysis:  
+   The protocol includes checks for mismatches caused by noise or potential attacks. Decoy states and error analysis help identify anomalies, ensuring the security of the key.
+
 
 ## Depolarization Noise
 
@@ -250,4 +284,4 @@ This project is licensed under the Apache License, Version 2.0.
 You may obtain a copy of the License at:  [http://www.apache.org/licenses/LICENSE-2.0](http://www.apache.org/licenses/LICENSE-2.0)
 
 Unless required by applicable law or agreed to in writing, this software is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
-For more details, refer to the [LICENSE file in this repository](#).
+For more details, refer to the [LICENSE file in this repository](LICENSE).
