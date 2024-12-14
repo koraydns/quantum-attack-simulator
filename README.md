@@ -1,6 +1,6 @@
 # Quantum Attack Simulator
 
-A Python-based simulator for analyzing the security of quantum communication systems, specifically the BB84 protocol. This simulator includes features to simulate and analyze the effects of **depolarization noise**, **Man-in-the-Middle (MITM) attacks**, and **Photon Number Splitting (PNS) attacks**.
+A Python-based simulator for analyzing the security of quantum communication systems. In version 1.0, the simulator is focused only on the BB84 protocol. This simulator includes features to simulate and analyze the effects of **depolarization noise**, **Man-in-the-Middle (MITM) attacks**, and **Photon Number Splitting (PNS) attacks**.
 
 ---
 
@@ -27,6 +27,14 @@ The BB84 protocol is a quantum key distribution protocol that enables two partie
 - **No-Cloning Theorem**: Quantum states cannot be perfectly duplicated.
 - **Measurement Collapse**: Measuring a quantum state changes it, making eavesdropping detectable.
 
+### Decoy and Signal States in BB84
+
+To further enhance the security of the BB84 protocol, qubits are categorized into two types:
+- **Signal States (S)**: These qubits carry the actual information that will contribute to the final cryptographic key. The alignment of sender and receiver bases during measurement determines the accuracy of these states.
+- **Decoy States (D)**: These are non-key qubits introduced into the communication to detect eavesdropping attempts, such as Photon Number Splitting (PNS) attacks. Decoy states help measure discrepancies and ensure that any irregularities in the quantum channel are flagged as potential security breaches.
+
+By incorporating decoy states, the BB84 protocol becomes more robust, as it enables the detection of sophisticated attacks that exploit multi-photon signals or other vulnerabilities in the quantum channel.
+
 ## Depolarization Noise
 
 Depolarization noise refers to the random flipping of qubit states during transmission due to imperfections in the quantum channel. This noise:
@@ -44,9 +52,13 @@ A MITM attack involves an adversary intercepting quantum communication between t
 ### Photon Number Splitting (PNS) Attack
 
 In a PNS attack, an adversary exploits decoy states by:
-- Splitting multi-photon signals.
-- Measuring one photon while forwarding the rest to the Receiver.
+- Measuring one or more photons from a multi-photon signal.
+- Forwarding the remaining photons to the Receiver.
 - This reduces the attacker's detection probability but increases error rates at certain intensity levels.
+
+This type of attack leverages the vulnerability of quantum channels when multiple photons are emitted simultaneously, such as in certain implementations of quantum communication systems. By selectively intercepting and measuring a portion of the photons, the attacker can gain partial information about the transmitted key while minimizing detection risks.
+
+Decoy states play a crucial role in detecting this type of attack by enabling an analysis of error rates across different intensity levels. Higher error rates in decoy states compared to the expected threshold may indicate the presence of a PNS attack.
 
 ## How to Use the Simulator
 
