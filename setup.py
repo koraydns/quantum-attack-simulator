@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name="quantum-attack-simulator",  
-    version="1.0.post1",  
+    version="1.0",  
     author="Koray Danisma",  
     author_email="koray.danisma@gmail.com",  
     description="A Python library for simulating BB84 protocol security and attacks.",
