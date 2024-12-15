@@ -165,7 +165,7 @@ Communication is terminated due to possible PNS attack.
 
 This visualization helps distinguish between natural noise and potential attacks by comparing observed error rates against expected thresholds.
 
-![PNS Attack Effects Visualization](Screen_Shots/pns-attack-effects-visualization.png)
+![PNS Attack Effects Visualization](https://github.com/koraydns/quantum-attack-simulator/blob/e02a636fdbc347b2b56b8a8a6c397941e88dc50f/Screen_Shots/pns-attack-effects-visualization.png)
 
 ### Scenario 4: MITM Attack Enabled
 ```bash
@@ -188,7 +188,7 @@ Communication is terminated due to detected interception. Possible MITM attack.
 
 This visualization aids in identifying potential MITM attacks by comparing mismatch rates against the expected noise threshold.
 
-![MITM Attack Effects Visualization](Screen_Shots/mitm-attack-effects-visualization.png)
+![MITM Attack Effects Visualization](https://github.com/koraydns/quantum-attack-simulator/blob/e02a636fdbc347b2b56b8a8a6c397941e88dc50f/Screen_Shots/mitm-attack-effects-visualization.png) 
 
 ## License
 
@@ -196,4 +196,4 @@ This project is licensed under the Apache License, Version 2.0.
 You may obtain a copy of the License at:  [http://www.apache.org/licenses/LICENSE-2.0](http://www.apache.org/licenses/LICENSE-2.0)
 
 Unless required by applicable law or agreed to in writing, this software is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
-For more details, refer to the [LICENSE file in this repository](LICENSE).
+For more details, refer to the [LICENSE file in this repository](https://github.com/koraydns/quantum-attack-simulator/blob/main/LICENSE).
