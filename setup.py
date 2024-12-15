@@ -28,7 +28,7 @@ setup(
     ],
     entry_points={
         "console_scripts": [
-            "quantum-sim=quantum_attack_simulator.bb84_example:main",
+            "quantum-sim=examples.bb84_example:main",
         ],
     },
     python_requires=">=3.7"
