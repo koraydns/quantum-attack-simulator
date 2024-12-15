@@ -43,6 +43,10 @@ To run the simulator with default settings:
 ```bash
 python examples/bb84_example.py
 ```
+or
+```bash
+quantum-sim
+```
 You can customize the simulation with the following arguments:
 
 - `--attack-type`: Specify the type of attack to simulate. Options are:
@@ -56,7 +60,7 @@ You can customize the simulation with the following arguments:
 
 Examples:
 ```bash
-python examples/bb84_example.py --attack-type MITM --depolarization-noise 1
+quantum-sim --attack-type MITM --depolarization-noise 1
 ```
 ```bash
 python examples/bb84_example.py --attack-type PNS
@@ -82,7 +86,7 @@ This scenario demonstrates the BB84 protocol simulation with depolarization nois
 - The mismatch rate is compared against the expected noise threshold. It is highly likely that no attack will be detected.
 - The error rates for different intensity levels are analyzed. All rates are within the noise threshold, confirming no PNS attack.
 ```bash
-python bb84_example.py --depolarization-noise 1
+quantum-sim --depolarization-noise 1
 ```
 ```bash
 Sender's Bits: 0000110101000111000101110111110101001100
@@ -124,7 +128,7 @@ This scenario represents the ideal condition where there is neither noise nor an
 - Since there are no mismatches, it is confirmed that no interception (e.g., MITM attack) is detected.
 - The absence of error rates for intensity levels confirms that no PNS attack occurred.
 ```bash
-python bb84_example.py
+quantum-sim
 ```
 ```bash
 Sender's Bits: 1110010101010111111000010111011010000111
@@ -147,7 +151,7 @@ The key is 18 bits long.
 ```
 ### Scenario 3: PNS Attack Enabled
 ```bash
-python bb84_example.py --attack-type PNS
+quantum-sim --attack-type PNS
 ```
 ```bash
 Receiver's Bases: ZXXZZXXZZZZXZXXZXXZXXZZZXXXZZZXXXXZZXZZZ
@@ -169,7 +173,7 @@ This visualization helps distinguish between natural noise and potential attacks
 
 ### Scenario 4: MITM Attack Enabled
 ```bash
-python bb84_example.py --attack-type MITM
+quantum-sim --attack-type MITM
 ```
 ```bash
 Receiver's Bases: XXXZXZXZXZXXZXZZZXXZZXXZZXZZZZZZZZZXXZZZ
