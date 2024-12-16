@@ -6,6 +6,19 @@ A Python-based simulator for analyzing the security of quantum communication sys
 
 The **Quantum Attack Simulator** allows users to study how various noise sources and attack vectors impact the security of the BB84 quantum key distribution protocol. By providing visualization tools and detailed analysis of attack effects, this simulator is an educational and research-oriented tool for understanding quantum communication vulnerabilities.
 
+## Theoretical Background
+
+For a comprehensive understanding of the theoretical aspects of the quantum communication and the attack scenarios simulated in this project, refer to the detailed post on [Quantum Attack Simulator](https://penetratechacademy.com/quantum-attack-simulator/).
+
+The post covers:
+- The foundational principles of quantum cryptography.
+- An in-depth explanation of the BB84 protocol.
+- How depolarization noise, Man-in-the-Middle attacks, and Photon Number Splitting attacks affect quantum key distribution.
+- Practical use cases and insights from the simulation.
+
+Explore the post to gain a deeper theoretical perspective that complements the hands-on simulations provided by this repository.
+
+
 ## How to Use the Simulator
 
 ### Prerequisites
