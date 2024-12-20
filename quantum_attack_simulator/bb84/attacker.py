@@ -2,11 +2,7 @@
 Quantum Attack Simulator - Attacker Module
 ------------------------------------------
 This module is part of the Quantum Attack Simulator project, licensed under the Apache 2.0 License.
-It provides implementations for simulating potential attacks in the BB84 quantum key distribution protocol, 
-including:
-
-- Photon Number Splitting (PNS)
-- Depolarization Noise
+It provides implementations for simulating potential attacks in the BB84 quantum key distribution protocol.
 
 Original Repository: https://github.com/koraydns/quantum-attack-simulator
 License: Apache 2.0 (See LICENSE file for details)
