@@ -5,6 +5,7 @@ This module is part of the Quantum Attack Simulator project, licensed under the 
 It implements the receiver's actions in the BB84 quantum key distribution protocol, including:
 
 - Measuring incoming qubits.
+- Analyzing Depolarization Impact
 - Performing key reconciliation with the sender.
 - Detecting potential interception or errors during quantum communication.
 
