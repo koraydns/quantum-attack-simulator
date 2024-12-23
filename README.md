@@ -22,7 +22,7 @@ Explore the post to gain a deeper theoretical perspective that complements the h
 ## How to Use the Simulator
 
 ### Prerequisites
-- **Python 3.7 or later**
+- **Python 3.7 or later**. The project was developed and tested in a **Python 3.11 environment**. It is recommended to use Python 3.11 to ensure compatibility and avoid potential issues. 
 - Install required dependencies:
 ```bash
 pip install -r requirements.txt
