@@ -30,7 +30,7 @@ pip install -r requirements.txt
 ### Installation
 Clone this repository and install locally:
  ```bash
-git clone https://github.com/yourusername/quantum-attack-simulator.git
+git clone https://github.com/koraydns/quantum-attack-simulator.git 
 cd quantum-attack-simulator
 ```
 Alternatively, install the package directly via pip:
