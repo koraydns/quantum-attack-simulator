@@ -8,7 +8,7 @@ The **Quantum Attack Simulator** allows users to study how various noise sources
 
 ## Theoretical Background
 
-For a comprehensive understanding of the theoretical aspects of the quantum communication and the attack scenarios simulated in this project, refer to the detailed post on [Quantum Attack Simulator](https://penetratechacademy.com/quantum-attack-simulator/).
+For a comprehensive understanding of the theoretical aspects of the quantum communication and the attack scenarios simulated in this project, refer to the detailed article on [Quantum Attack Simulator](https://doi.org/10.5281/zenodo.17586868).
 
 The post covers:
 - The foundational principles of quantum cryptography.
