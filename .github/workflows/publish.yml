@@ -12,22 +12,22 @@ jobs:
     steps:
       - name: Check out code
         uses: actions/checkout@v4
-      
+
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
-          python-version: "3.x"
-      
+          python-version: "3.11"
+
       - name: Install build tools
         run: |
           python -m pip install --upgrade pip
           python -m pip install build
-      
+
       - name: Build package
         run: python -m build
-      
+
       - name: Publish package distributions to PyPI
-        uses: pypa/gh-action-pypi-publish@release/v1
+        uses: pypa/gh-action-pypi-publish@v1.12.3
         with:
-          packages-dir: dist/
           password: ${{ secrets.PYPI_API_TOKEN }}
+          packages-dir: dist/
