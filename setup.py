@@ -1,18 +1,18 @@
 from setuptools import setup, find_packages
 
-with open("README.md", "r") as fh:
+with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setup(
-    name="quantum-attack-simulator",  
-    version="1.0.1",  
-    author="Koray Danisma",  
-    author_email="koray.danisma@gmail.com",  
+    name="quantum-attack-simulator",
+    version="1.0.1.post1",
+    author="Koray Danisma",
+    author_email="koray.danisma@gmail.com",
     description="A Python library for simulating BB84 protocol security and attacks.",
-    long_description=long_description,  
-    long_description_content_type="text/markdown",  
+    long_description=long_description,
+    long_description_content_type="text/markdown",
     url="https://github.com/koraydns/quantum-attack-simulator",
-    packages=find_packages(),  
+    packages=find_packages(),
     install_requires=[
         "qiskit>=0.45.0",
         "qiskit-aer>=0.13.1",
@@ -20,16 +20,24 @@ setup(
     ],
     classifiers=[
         "Programming Language :: Python :: 3",
-        "License :: OSI Approved :: Apache Software License",  
+        "License :: OSI Approved :: Apache Software License",
         "Operating System :: OS Independent",
         "Development Status :: 4 - Beta",
         "Intended Audience :: Science/Research",
+        "Intended Audience :: Education",
         "Topic :: Scientific/Engineering :: Physics",
+        "Topic :: Security",
+        "Topic :: Security :: Cryptography",
+        "Natural Language :: English",
     ],
+    project_urls={
+        "Source": "https://github.com/koraydns/quantum-attack-simulator",
+        "Paper": "https://doi.org/10.5281/zenodo.17586868",  
+    },
     entry_points={
         "console_scripts": [
             "quantum-sim=examples.bb84_example:main",
         ],
     },
-    python_requires=">=3.7"
+    python_requires=">=3.7",
 )
