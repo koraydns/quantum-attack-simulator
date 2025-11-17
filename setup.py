@@ -33,6 +33,7 @@ setup(
     project_urls={
         "Source": "https://github.com/koraydns/quantum-attack-simulator",
         "Paper": "https://doi.org/10.5281/zenodo.17586868",  
+        "Documentation": "https://github.com/koraydns/quantum-attack-simulator#readme"
     },
     entry_points={
         "console_scripts": [
@@ -41,3 +42,4 @@ setup(
     },
     python_requires=">=3.7",
 )
+
